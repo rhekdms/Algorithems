@@ -18,9 +18,9 @@ def one(n):
         sol[n] = one(n-1)+1
         return sol[n]
 
-while True:
-    n = int(input())
-    print(one(n))
+
+n = int(input())
+print(one(n))
 
 '''
 1-> 0
