@@ -1,6 +1,3 @@
-def vartest():
-    print(a)
-
-if __name__ == "__main__": # 메인문입니다.
-    a = 1
-	vartest()
+sol = [[1,1],[2,3]]
+coin = [1,2,3]
+print(coin[coin.index(sol[0][0])])
