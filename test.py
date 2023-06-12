@@ -1,3 +1,2 @@
-sol = [[1,1],[2,3]]
-coin = [1,2,3]
-print(coin[coin.index(sol[0][0])])
+line = [list(map(int,input().split())) for i in range(5)]
+print(line.index(3))
