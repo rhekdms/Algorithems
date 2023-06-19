@@ -2,33 +2,18 @@ import sys
 input = sys.stdin.readline
 
 N = list(input().strip())
-cuser = len(N)
+N_R = []
 for i in range(int(input())):
     M = input().rstrip()
     if M == 'L':
-        if cuser == 0:
-            pass
-        else:
-            cuser -= 1
+        if N:
+            N_R.append(N.pop())
     elif M == 'D':
-        if cuser == len(N):
-            pass
-        else:
-            cuser += 1
+        if N_R:
+            N.append(N_R.pop())
     elif M == 'B':
-        if cuser == 0:
-            pass
-        else:
-            del N[cuser-1]
-            cuser -= 1
+        if N:
+            N.pop()
     else:
-        N.insert(cuser,list(M.split())[1])
-        cuser += 1
-print(*N,sep='')
-'''
-L = move left
-D = move right
-B = delete -1
-P = insert 1
-나중에 다시!
-'''
+        N.append(M[-1])
+print(*N,*N_R[::-1],sep='')
