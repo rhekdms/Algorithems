@@ -1,16 +1,26 @@
 import sys
 input=sys.stdin.readline
-visit = []
 
-def dfs(n,m):
-    visit.append(G[n][m])
-    for i in [[n-1,m],[n+1,m],[n,m-1],[n,m+1]]:
-        if -1<i[0]<R and -1<i[1]<C:
-            if G[i[0]][i[1]] not in visit:
-                dfs(i[0],i[1])
+n,f=map(int,input().split())
+l=list(map(int,input().split()))
 
-R,C = map(int,input().split())
-G = [list(map(str,input().strip())) for i in range(R)]
-dfs(0,0)
-print(visit)
-#1987보류
+s=l[0]
+left=0
+right=0
+
+mx=float('inf')
+cnt=1
+while left<=right:
+    if s==f:
+        mx=min(mx,cnt)
+    
+    if s<f and right+1<n:
+        right+=1
+        s+=l[right]
+        cnt+=1
+    else:
+        s-=l[left]
+        left+=1
+        cnt-=1
+
+print(mx if mx!=float('inf')else 0)
