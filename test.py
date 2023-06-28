@@ -1,26 +1,18 @@
-import sys
-input=sys.stdin.readline
+from collections import deque
 
-n,f=map(int,input().split())
-l=list(map(int,input().split()))
-
-s=l[0]
-left=0
-right=0
-
-mx=float('inf')
-cnt=1
-while left<=right:
-    if s==f:
-        mx=min(mx,cnt)
-    
-    if s<f and right+1<n:
-        right+=1
-        s+=l[right]
-        cnt+=1
-    else:
-        s-=l[left]
-        left+=1
-        cnt-=1
-
-print(mx if mx!=float('inf')else 0)
+n, l = map(int, input().split())
+arr = [*map(int, input().split())]
+m = deque()
+for i in range(n):
+    tmp = arr[i]
+    print('tmp',tmp)
+    while m and m[-1] > tmp:
+        m.pop()
+        print('m',m)
+    m.append(tmp)
+    print('m2',m)
+    #윈도우 크기보다 커진 단계에서 arr와 비교한 후 left pop
+    if i >= l and m[0] == arr[i - l]: 
+        m.popleft()
+        print('m3',m)
+    print('sol',m[0])
