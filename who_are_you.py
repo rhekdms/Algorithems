@@ -1,8 +1,5 @@
 T = int(input())
-for i in range(T):
-    N = int(input())
-    n = str(N**2)
-    if n[-len(str(N)):] == str(N):
-        print('YES')
-    else:
-        print("NO")
+A = [tuple(map(int,input().split())) for i in range(T)]
+A_sort = sorted(A)
+print(A)
+print(A_sort)
