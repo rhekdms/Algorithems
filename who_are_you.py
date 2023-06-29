@@ -1,5 +1,29 @@
-T = int(input())
-A = [tuple(map(int,input().split())) for i in range(T)]
-A_sort = sorted(A)
-print(A)
-print(A_sort)
+d={'1/4':0,'1/2':0,'3/4':0}
+for _ in range(int(input())):
+    d[input()]+=1
+
+s=0
+if d['1/2']>1:
+    s+=d['1/2']//2
+    if d['1/2']%2==1:
+        d['1/2']=1
+    else:d['1/2']=0
+
+if d['1/4']>0 and d['3/4']>0:
+    s+=(n:=min(d['1/4'],d['3/4']))
+    d['1/4']-=n
+    d['3/4']-=n
+
+if d['1/4']>0 and d['1/2']>0:
+    s+=(n:=min(d['1/4'],d['1/2']*2))
+    d['1/4']-=n*2
+    d['1/2']-=n
+
+if d['1/4']>3:
+    s+=(n:=d['1/4']//4)
+    d['1/4']-=n*4
+
+for i in d:
+    s+=d[i] if d[i]>0 else 0
+
+print(s)
