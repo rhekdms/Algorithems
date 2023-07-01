@@ -1,18 +1,16 @@
 import sys
-from itertools import product as pro
 input = sys.stdin.readline
 N, M = map(int,input().split())
-N = list(list(range(1,N+1)) for i in range(M))
-N = pro(*N)
-n = []
-for i in N:
-    n.append(sorted(i))
-N = list(dict.fromkeys(n))
-for i in N:
-    for j in i:
-        if j == '[' or j == ']' or j == ',':
-            pass
+sol=[0 for i in range(M)]
+
+def f(set,x):
+    for i in range(x,N+1):
+        sol[set]=i
+        if set==M-1:
+            print(*sol)
         else:
-            print(j,end='')
-    print()
-# 시간초과
+            f(set+1,i)
+        if sol == [[N] for i in range(M)]:
+            return
+
+f(0,1)
